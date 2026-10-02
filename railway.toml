@@ -1,5 +1,7 @@
+# Use Dockerfile so Composer/PHP are available (fixes nixpacks "composer: command not found")
 [build]
-builder = "NIXPACKS"
+builder = "DOCKERFILE"
+dockerfilePath = "Dockerfile"
 
 [deploy]
 restartPolicyType = "ON_FAILURE"

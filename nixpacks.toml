@@ -1,14 +1,10 @@
-# Railway / Nixpacks: PHP only — skip Node/npm (OOM fix).
-# Frontend assets are pre-built and committed in public/build.
-
+# Nixpacks config kept as fallback; Railway now uses Dockerfile via railway.toml.
 providers = ["php"]
-
-[variables]
-NIXPACKS_PHP_ROOT_DIR = "/app/public"
 
 [phases.setup]
 nixPkgs = [
   "php83",
+  "php83Packages.composer",
   "php83Extensions.gd",
   "php83Extensions.pdo",
   "php83Extensions.pdo_mysql",
@@ -25,14 +21,14 @@ nixPkgs = [
 
 [phases.install]
 cmds = [
-  "composer install --no-dev --prefer-dist --optimize-autoloader --no-interaction --no-progress",
+  "composer install --no-dev --prefer-dist --optimize-autoloader --no-interaction --no-progress --no-scripts",
+  "composer dump-autoload --optimize --no-dev",
 ]
 
 [phases.build]
 cmds = [
   "mkdir -p storage/framework/cache/data storage/framework/sessions storage/framework/views storage/logs bootstrap/cache",
   "chmod -R 775 storage bootstrap/cache || true",
-  "php artisan package:discover --ansi || true",
 ]
 
 [start]
