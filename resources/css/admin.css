@@ -1,0 +1,57 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Fraunces:opsz,wght@9..144,500;9..144,600&family=JetBrains+Mono:wght@400;500&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    body { @apply bg-[#F4F2F7] text-ink font-sans antialiased; }
+    ::-webkit-scrollbar { width: 8px; height: 8px; }
+    ::-webkit-scrollbar-thumb { @apply bg-ink/15 rounded-full; }
+    [x-cloak] { display: none !important; }
+}
+
+@layer components {
+    .adm-card { @apply rounded-3xl bg-white ring-1 ring-ink/5 shadow-card; }
+    .adm-card-head { @apply flex items-center justify-between gap-4 px-6 py-5 border-b border-ink/5; }
+    .adm-card-title { @apply font-semibold text-lg tracking-tight; }
+
+    .adm-input { @apply w-full rounded-xl border border-ink/10 bg-white px-3.5 py-2.5 text-sm text-ink placeholder:text-ink-300 transition focus:border-plum-700 focus:outline-none focus:ring-4 focus:ring-plum-700/10 disabled:bg-paper-100; }
+    .adm-select { @apply adm-input pr-9 bg-no-repeat bg-[right_0.75rem_center] bg-[length:1rem] appearance-none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%238B8497' stroke-width='2'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' d='m6 9 6 6 6-6'/%3E%3C/svg%3E"); }
+    .adm-label { @apply mb-1.5 block text-[13px] font-semibold text-ink-700; }
+    .adm-hint { @apply mt-1.5 text-xs text-ink-300; }
+    .adm-error { @apply mt-1.5 text-xs font-medium text-rose-600; }
+    .adm-checkbox { @apply h-[18px] w-[18px] rounded border-ink/20 text-plum-700 focus:ring-plum-700/30; }
+    .adm-toggle { @apply relative inline-flex h-6 w-11 shrink-0 cursor-pointer items-center rounded-full bg-ink/15 transition peer-checked:bg-plum-700; }
+
+    .btn { @apply inline-flex items-center justify-center gap-2 rounded-xl font-semibold text-sm transition disabled:opacity-50 disabled:pointer-events-none focus:outline-none focus-visible:ring-4 focus-visible:ring-plum-700/20 whitespace-nowrap; }
+    .btn-md { @apply h-10 px-4; }
+    .btn-sm { @apply h-[34px] px-3 text-[13px] rounded-lg; }
+    .btn-xs { @apply h-7 px-2.5 text-xs rounded-lg; }
+    .btn-lg { @apply h-12 px-6; }
+    .btn-primary { @apply bg-plum-950 text-white hover:bg-plum-700 shadow-soft; }
+    .btn-accent { @apply bg-marigold-400 text-plum-950 hover:bg-marigold-300; }
+    .btn-secondary { @apply bg-white text-ink ring-1 ring-inset ring-ink/10 hover:bg-paper-100; }
+    .btn-ghost { @apply text-ink-500 hover:bg-ink/5 hover:text-ink; }
+    .btn-danger { @apply bg-rose-600 text-white hover:bg-rose-700; }
+    .btn-danger-soft { @apply bg-rose-50 text-rose-700 hover:bg-rose-100; }
+    .btn-teal { @apply bg-teal-700 text-white hover:bg-teal-800; }
+    .icon-btn { @apply inline-flex h-9 w-9 items-center justify-center rounded-xl text-ink-500 transition hover:bg-ink/5 hover:text-ink; }
+
+    .adm-table { @apply w-full text-sm; }
+    .adm-table thead th { @apply bg-paper-50 px-4 py-3 text-left text-[11px] font-bold uppercase tracking-wider text-ink-300 first:pl-6 last:pr-6 whitespace-nowrap; }
+    .adm-table tbody td { @apply px-4 py-3.5 border-t border-ink/5 align-middle first:pl-6 last:pr-6; }
+    .adm-table tbody tr { @apply transition hover:bg-paper-50/60; }
+
+    .pill { @apply inline-flex items-center gap-1 rounded-full px-2.5 py-0.5 text-xs font-semibold ring-1 ring-inset capitalize whitespace-nowrap; }
+
+    .nav-item { @apply flex items-center gap-3 rounded-xl px-3 py-2.5 text-[14px] font-medium text-paper/70 transition hover:bg-white/5 hover:text-paper; }
+    .nav-item.is-active { @apply bg-marigold-400 text-plum-950 hover:bg-marigold-400 hover:text-plum-950; }
+    .nav-group { @apply px-3 pt-5 pb-2 text-[10px] font-bold uppercase tracking-[0.18em] text-paper/35; }
+
+    .stat-card { @apply adm-card p-5 relative overflow-hidden; }
+
+    .prose-admin { @apply prose prose-sm max-w-none prose-headings:font-semibold; }
+    .toast { @apply flex items-start gap-3 rounded-2xl bg-ink px-4 py-3 text-sm text-white shadow-lift; }
+    .dropzone { @apply flex flex-col items-center justify-center rounded-2xl border-2 border-dashed border-ink/15 bg-paper-50 px-6 py-8 text-center transition hover:border-plum-700/40 hover:bg-plum-50/40; }
+}

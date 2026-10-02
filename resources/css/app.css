@@ -1,0 +1,133 @@
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=Plus+Jakarta+Sans:ital,wght@0,300..800;1,300..800&family=Hind+Siliguri:wght@300;400;500;600;700&family=Noto+Serif+Bengali:wght@400;600;700&display=swap');
+@import 'swiper/css';
+@import 'swiper/css/effect-fade';
+@import 'swiper/css/pagination';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    :root {
+        --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    html {
+        scroll-behavior: smooth;
+        -webkit-font-smoothing: antialiased;
+        text-rendering: optimizeLegibility;
+    }
+
+    body {
+        @apply bg-paper text-ink font-sans antialiased selection:bg-marigold-400 selection:text-plum-950;
+    }
+
+    [lang='bn'] body,
+    [lang='bn'] .font-display {
+        @apply font-bangla;
+    }
+
+    ::-webkit-scrollbar { width: 10px; height: 10px; }
+    ::-webkit-scrollbar-track { background: transparent; }
+    ::-webkit-scrollbar-thumb { @apply bg-plum-300 rounded-full; }
+    ::-webkit-scrollbar-thumb:hover { @apply bg-plum-500; }
+
+    img { @apply select-none; }
+
+    h1, h2, h3, .font-display { font-variation-settings: 'opsz' 144, 'SOFT' 50; }
+}
+
+@layer components {
+    /* Buttons */
+    .btn {
+        @apply inline-flex items-center justify-center gap-2 rounded-full font-semibold tracking-tight transition-all duration-300 ease-out-expo disabled:opacity-50 disabled:pointer-events-none focus:outline-none focus-visible:ring-4 focus-visible:ring-marigold-400/40;
+    }
+    .btn-lg { @apply h-14 px-8 text-base; }
+    .btn-md { @apply h-12 px-6 text-sm; }
+    .btn-sm { @apply h-10 px-5 text-sm; }
+    .btn-xs { @apply h-8 px-4 text-xs; }
+
+    .btn-primary { @apply bg-plum-950 text-paper hover:bg-plum-700 hover:-translate-y-0.5 active:translate-y-0 shadow-soft hover:shadow-lift; }
+    .btn-accent { @apply bg-marigold-400 text-plum-950 hover:bg-marigold-300 hover:-translate-y-0.5 active:translate-y-0 shadow-soft hover:shadow-lift; }
+    .btn-outline { @apply border-2 border-ink text-ink hover:bg-ink hover:text-paper; }
+    .btn-ghost { @apply text-ink hover:bg-ink/5; }
+    .btn-white { @apply bg-white text-ink hover:bg-paper-200 shadow-soft; }
+    .btn-teal { @apply bg-teal-700 text-white hover:bg-teal-800 hover:-translate-y-0.5; }
+
+    /* Icon button */
+    .icon-btn {
+        @apply inline-flex h-11 w-11 items-center justify-center rounded-full text-ink transition hover:bg-ink/5 focus:outline-none focus-visible:ring-4 focus-visible:ring-marigold-400/40 relative;
+    }
+
+    /* Form controls */
+    .input {
+        @apply w-full rounded-2xl border border-ink/10 bg-white px-4 py-3.5 text-[15px] text-ink placeholder:text-ink-300 transition focus:border-plum-700 focus:outline-none focus:ring-4 focus:ring-plum-700/10;
+    }
+    .label { @apply mb-1.5 block text-sm font-semibold text-ink-700; }
+    .checkbox { @apply h-5 w-5 rounded-md border-ink/20 text-plum-700 focus:ring-plum-700/30; }
+    .radio { @apply h-5 w-5 border-ink/20 text-plum-700 focus:ring-plum-700/30; }
+
+    /* Typography */
+    .eyebrow { @apply text-xs font-bold uppercase tracking-[0.2em]; }
+    .lead { @apply text-lg text-ink-500 leading-relaxed; }
+
+    /* Product card */
+    .product-card { @apply relative flex flex-col; }
+    .product-card__media { @apply relative aspect-[3/4] overflow-hidden rounded-3xl bg-paper-200; }
+    .product-card__img { @apply absolute inset-0 h-full w-full object-cover transition duration-700 ease-out-expo group-hover:scale-105; }
+    .product-card__hover { @apply absolute inset-0 h-full w-full object-cover opacity-0 transition duration-700 ease-out-expo group-hover:opacity-100 group-hover:scale-105; }
+
+    /* Badge */
+    .badge { @apply inline-flex items-center rounded-full px-2.5 py-1 text-[11px] font-bold uppercase tracking-wider; }
+    .pill { @apply inline-flex items-center gap-1 rounded-full px-3 py-1 text-xs font-semibold ring-1 ring-inset; }
+
+    /* Section */
+    .section { @apply py-16 md:py-24; }
+    .section-tight { @apply py-10 md:py-16; }
+
+    /* Link underline reveal */
+    .link-underline {
+        @apply relative inline-block;
+        background: linear-gradient(currentColor, currentColor) no-repeat right bottom / 0 1.5px;
+        transition: background-size 0.4s var(--ease-out-expo);
+    }
+    .link-underline:hover { background-size: 100% 1.5px; background-position-x: left; }
+
+    /* Marquee */
+    .marquee { @apply flex overflow-hidden whitespace-nowrap; mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent); }
+    .marquee__track { @apply flex shrink-0 items-center gap-8 animate-marquee; }
+    .marquee:hover .marquee__track { animation-play-state: paused; }
+
+    /* Prose overrides */
+    .prose-nokshi { @apply prose prose-lg prose-headings:font-display prose-headings:tracking-tight prose-a:text-plum-700 prose-img:rounded-3xl max-w-none; }
+
+    /* Skeleton */
+    .skeleton { @apply bg-gradient-to-r from-paper-200 via-paper-100 to-paper-200 bg-[length:200%_100%] animate-shimmer; }
+
+    /* Star rating */
+    .stars { @apply inline-flex items-center gap-0.5 text-marigold-500; }
+
+    /* Toast */
+    .toast { @apply pointer-events-auto flex items-start gap-3 rounded-2xl bg-ink px-4 py-3.5 text-sm text-paper shadow-lift; }
+}
+
+@layer utilities {
+    .text-balance { text-wrap: balance; }
+    .text-pretty { text-wrap: pretty; }
+    .no-scrollbar::-webkit-scrollbar { display: none; }
+    .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    .grain::after {
+        content: '';
+        @apply pointer-events-none absolute inset-0 bg-grain opacity-60 mix-blend-multiply;
+    }
+    .clip-diagonal { clip-path: polygon(0 0, 100% 0, 100% 92%, 0 100%); }
+    .writing-vertical { writing-mode: vertical-rl; }
+    .text-stroke { -webkit-text-stroke: 1.5px currentColor; color: transparent; }
+    [x-cloak] { display: none !important; }
+    .reveal { opacity: 0; transform: translateY(24px); }
+    .reveal.is-visible { opacity: 1; transform: none; transition: opacity 0.9s var(--ease-out-expo), transform 0.9s var(--ease-out-expo); }
+}
+
+/* Swiper theming */
+.swiper-pagination-bullet { @apply h-2 w-2 bg-white/60 opacity-100 transition-all; }
+.swiper-pagination-bullet-active { @apply w-8 rounded-full bg-marigold-400; }

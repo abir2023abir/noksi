@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 800" width="600" height="800">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#F5E5F2"/>
+      <stop offset="1" stop-color="#EFE6D8"/>
+    </linearGradient>
+  </defs>
+  <rect width="600" height="800" fill="url(#g)"/>
+  <g fill="none" stroke="#5B1B4F" stroke-opacity="0.18" stroke-width="3">
+    <path d="M200 300 L300 200 L400 300 L300 400 Z"/>
+    <path d="M230 300 L300 230 L370 300 L300 370 Z"/>
+    <circle cx="300" cy="300" r="20"/>
+  </g>
+  <text x="300" y="520" text-anchor="middle" font-family="Georgia, serif" font-size="40" fill="#5B1B4F" fill-opacity="0.35">NOKSHI</text>
+</svg>
